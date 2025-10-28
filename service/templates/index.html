@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Food Grid -->
+    <div class="grid-container">
+        <!-- Food Card 1 -->
+        {% for food in foods %}
+        <form method="POST">
+            {%csrf_token%}
+            <div class="food-card">
+            <div class="food-preview">
+                <img class="food-image" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Delicious Burger">
+                {%if food.discount%}
+                <div class="discount-badge">{{food.discount}}% OFF</div>
+                {% endif %}
+            </div>
+            <div class="food-name">
+                <input type="hidden" name="item" value="{{ food.item_name }}">
+                <input type="hidden" name="username" value="Cristiano Ronaldo">
+                <p>{{food.item_name}}</p>
+            </div>
+            <div class="food-price">
+                <span class="price-amount">{{food.price}}</span>
+                <span class="price-currency">USD</span>
+            </div>
+            <input class="quantity-input" type="number" name='quantity' min="1" placeholder="Quantity">
+            <div class="button-group">
+                <button type="submit" formaction="{% url 'order_view' %}">Order Now</button>
+                <button type="submit" formaction="{% url 'add_to_cart_view' %}" >Add to Cart</button>
+            </div>
+        </div>
+        </form>
+        {%endfor%}
+    </div>
+{% endblock %}

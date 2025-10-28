@@ -1,0 +1,37 @@
+<!-- body.html -->
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <div class="grid-container">
+        {% for food in foods %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="food-card">
+                <div class="food-preview">
+                    <img class="food-image" src="{{ food.image_url }}" alt="{{ food.name }}">
+                    {% if food.discount %}
+                    <div class="discount-badge">
+                        <p>{{ food.discount }}% off</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="food-name">
+                    <p>{{ food.item_name }}</p>
+                </div>
+                <div class="food-price">
+                    <span class="price-amount">{{ food.price }}</span>
+                    <span class="price-currency">USD</span>
+                </div>
+                <input type="hidden" name="food" value="{{ food.vendor }}">
+                <input type="number" name="quantity" class="quantity-input" min="1" required placeholder="Quantity">
+                <div class="button-group">
+                    <button type="submit" formaction="{% url 'order_view' %}">Order Now</button>
+                    <button type="submit" formaction="{% url 'add_to_cart_view' %}">Add to Cart</button>
+                </div>
+            </div>
+        </form>
+        {% endfor %}
+    </div>
+{% endblock %}

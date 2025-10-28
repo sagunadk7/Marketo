@@ -1,0 +1,81 @@
+        .header-flex {
+                border-radius: 5px;
+                background-color: blue;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                align-items: center;
+                height: 90px;
+            }
+        .right-section {
+            border-radius: 4px;
+                display: flex;
+                width: 400px;
+                justify-content: space-between;
+                align-items: center;
+                background-color: lightblue;
+                flex-shrink: 0;
+            }
+        .middle-section {
+            margin-left: 70px;
+            margin-right: 35px;
+            max-width: 500px;
+            align-items: center;
+            flex: 2;
+            background-color: lightpink;
+
+            }
+        .left-section {
+            display: flex;
+            width: 100px;
+            background-color: lightblue;
+            }
+        .hamburger-menu {
+            height: 50px;
+        }
+        .search-icon {
+            height: 30px;
+        }
+        .cart-icon {
+            height: 50px;
+        }
+
+        .order-icon {
+            height: 50px;
+        }
+
+        .user-profile-icon {
+            height: 50px;
+        }
+.order-container {
+    background-color: red;
+    border-radius: 4px;
+    display: flex;
+    width: 300px;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.user-profile-icon-container {
+    background-color: green;
+    margin-right: 20px;
+    border-radius: 4px;
+    border-style: solid;
+}
+
+.cart-icon-container {
+    border-radius: 10px;
+    background-color: rgb(126,96,96);
+}
+.search-bar {
+    flex: 1;
+    height: 36px;
+    padding-left: 10px;
+    font-size: 16px;
+    border-radius:4px;
+    
+}
+.search-bar::placeholder {
+    font-size: 20px;
+}
