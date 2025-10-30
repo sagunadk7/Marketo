@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foodie | Homepage</title>
+    <title>Marketo | Homepage</title>
     {% load static %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'CSS/header.css' %}">
@@ -25,14 +25,14 @@
         <div class="right-section">
             <div class="order-container">
                 <div class="order-icon-container">
-                    <a href="{% url 'orders' %}"><img class="order-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTYgMkgzYTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0yVjRhMiAyIDAgMCAwLTItMmgtNU02IDJ2NGgxMlYyTTYgMTBoMTJNNiAxNGg3Ij48L3BhdGg+PC9zdmc+" alt="Orders"></a>
+                    <a href="{% url 'orders' %}" target="_blank" rel="noopener noreferrer"><img class="order-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTYgMkgzYTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0yVjRhMiAyIDAgMCAwLTItMmgtNU02IDJ2NGgxMlYyTTYgMTBoMTJNNiAxNGg3Ij48L3BhdGg+PC9zdmc+" alt="Orders"></a>
                 </div>
                 <div class="cart-icon-container">
-                    <a href="{% url 'carts' %}"><img class="cart-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PGNpcmNsZSBjeD0iOSIgY3k9IjIxIiByPSIxIj48L2NpcmNsZT48Y2lyY2xlIGN4PSIyMCIgY3k9IjIxIiByPSIxIj48L2NpcmNsZT48cGF0aCBkPSJNMSAxaDRsMi42OCAxMy4zOUEyIDIgMCAwIDAgOS42NiAxN0gxOS4zNGEyIDIgMCAwIDAgMS45NS0xLjU2TDIzIDZINiI+PC9wYXRoPjwvc3ZnPg==" alt="Cart"></a>
+                    <a href="{% url 'carts' %}" target="_blank" rel="noopener noreferrer"><img class="cart-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PGNpcmNsZSBjeD0iOSIgY3k9IjIxIiByPSIxIj48L2NpcmNsZT48Y2lyY2xlIGN4PSIyMCIgY3k9IjIxIiByPSIxIj48L2NpcmNsZT48cGF0aCBkPSJNMSAxaDRsMi42OCAxMy4zOUEyIDIgMCAwIDAgOS42NiAxN0gxOS4zNGEyIDIgMCAwIDAgMS45NS0xLjU2TDIzIDZINiI+PC9wYXRoPjwvc3ZnPg==" alt="Cart"></a>
                 </div>
             </div>
             <div class="user-profile-icon-container">
-                <a href="{% url 'profile' %}"> <img class="user-profile-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDIxdi0yYTQgNCAwIDAgMC00LTRINGE0IDQgMCAwIDAtNCA0djIiPjwvcGF0aD48Y2lyY2xlIGN4PSIxMiIgY3k9IjciIHI9IjQiPjwvY2lyY2xlPjwvc3ZnPg==" alt="Profile"> </a>
+                <a href="{% url 'profile' %}" target="_blank" rel="noopener noreferrer"> <img class="user-profile-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDIxdi0yYTQgNCAwIDAgMC00LTRINGE0IDQgMCAwIDAtNCA0djIiPjwvcGF0aD48Y2lyY2xlIGN4PSIxMiIgY3k9IjciIHI9IjQiPjwvY2lyY2xlPjwvc3ZnPg==" alt="Profile"> </a>
             </div>
         </div>
     </div>

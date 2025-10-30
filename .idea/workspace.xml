@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de60c4c8-28d0-4353-83ee-0b38d7d455b8" name="Changes" comment="" />
+    <list default="true" id="de60c4c8-28d0-4353-83ee-0b38d7d455b8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/core/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0002_delete_otp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0003_customuser_otp_code_customuser_otp_created_at_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/enter_otp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/enter_phone.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/messages.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/online_food_order/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/online_food_order/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/online_food_order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/online_food_order/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/service/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/migrations/0002_alter_itemsdescription_discount.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/migrations/0003_orders.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/migrations/0004_orders_order_at_orders_order_by_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/migrations/0005_alter_orders_order_by.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/migrations/0006_alter_orders_order_at.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,18 +48,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "sagunadk7"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sagunadk7&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/sagunadk7/Marketo.git",
-    "accountId": "263671d9-edec-4f5c-8f61-3a88ffb725bf"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/sagunadk7/Marketo.git&quot;,
+    &quot;accountId&quot;: &quot;263671d9-edec-4f5c-8f61-3a88ffb725bf&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -45,15 +72,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/service/static/CSS" />

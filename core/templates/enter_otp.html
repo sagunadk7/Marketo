@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter OTP - Foodie Delights</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'CSS/header.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/footer.css' %}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .otp-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .otp-logo {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff6b6b;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .otp-logo span {
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .phone-info {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .otp-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 5px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .otp-input:focus {
+            border-color: #ff6b6b;
+        }
+
+        .otp-input::placeholder {
+            letter-spacing: normal;
+        }
+
+        .verify-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .verify-btn:hover {
+            background: #ff5252;
+        }
+
+        .resend-otp {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .resend-otp a {
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .resend-otp a:hover {
+            color: #ff5252;
+            text-decoration: underline;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            color: #ff5252;
+            text-decoration: underline;
+        }
+
+        .timer {
+            text-align: center;
+            color: #666;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    {% include 'header.html' %}
+
+
+
+    <div class="main-content">
+        {% include 'messages.html' %}
+        <div class="otp-container">
+            <div class="otp-logo">Foodie<span>Delights</span></div>
+            <h1>Enter OTP</h1>
+            <div class="phone-info">
+                We've sent a 6-digit OTP to <strong>{{ phone_number }}</strong>
+            </div>
+
+            <form id="otpForm" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="otp">Enter 6-digit OTP</label>
+                    <input type="text" id="otp" name="otp" class="otp-input" placeholder="Enter 6-digit OTP" maxlength="6" required>
+                </div>
+
+                <button type="submit" class="verify-btn">Verify OTP</button>
+
+                <div class="resend-otp">
+                    Didn't receive OTP? <a href="#" id="resendLink">Resend</a>
+                </div>
+
+                <div class="timer" id="timer">
+                    Resend available in: <span id="countdown">60</span> seconds
+                </div>
+
+                <div class="back-link">
+                    <a href="{% url 'request_otp' %}">← Back to Phone Entry</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+</body>
+</html>

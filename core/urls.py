@@ -4,7 +4,8 @@ from . import views
 
 handler404 = 'core.views.custom_404'
 urlpatterns = [
-    path('login/',views.login_view,name='login'),
-    path('logout/',views.logout,name='logout'),
+    path("request_otp/", views.request_otp_view, name="request_otp"),
+    path("verify-otp/", views.verify_otp_view, name="verify_otp"),
+    path('logout/',views.logout_view,name='logout'),
     path('profile/',views.profile,name='profile'),
 ]
