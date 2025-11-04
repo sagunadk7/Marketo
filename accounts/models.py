@@ -29,7 +29,7 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     phone_number = models.CharField(max_length=15,unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-
+    user_type = models.BooleanField()
     otp_code = models.CharField(max_length=6,blank=True,null=True)
     otp_created_at = models.DateTimeField(blank=True,null=True)
     otp_used = models.BooleanField(default=False)

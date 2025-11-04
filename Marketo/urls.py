@@ -7,6 +7,7 @@ from service.views import store
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',store,name='store'),
-    path('accounts/',include('core.urls')),
-    path('services/',include('service.urls'))
+    path('accounts/',include('accounts.urls')),
+    path('services/',include('service.urls')),
+    path('vendors/',include('vendor.urls'))
 ]

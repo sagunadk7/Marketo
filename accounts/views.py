@@ -7,7 +7,10 @@ from django.http import HttpResponse
 from datetime import timedelta
 from .models import CustomUser
 from django.contrib.auth.backends import ModelBackend
+from django.contrib.auth.decorators import login_required
+
 OTP_VALID_MINUTES = 10
+
 def request_otp_view(request):
     if request.method == 'POST':
         phone = request.POST.get("phone_number","").strip()
@@ -26,9 +29,6 @@ def request_otp_view(request):
         return redirect('verify_otp')
     return render(request,"enter_phone.html")
 
-
-def login_view(request):
-    return render(request,'enter_phone.html')
 
 def verify_otp_view(request):
     phone = request.session.get("otp_phone")
@@ -67,6 +67,8 @@ def verify_otp_view(request):
 def logout_view(request):
     logout(request)
     return redirect('store')
+
+@login_required(login_url='/accounts/request-otp/')
 def profile(request):
     return render(request,'profile.html')
 def custom_404(request,exception):
