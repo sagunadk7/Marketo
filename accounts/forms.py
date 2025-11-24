@@ -6,10 +6,11 @@ class CustomUserCreationForm(forms.ModelForm):
     """Forms for creating new users in admin - includes repeated passwords fields"""
     password1 = forms.CharField(label='Password',widget=forms.PasswordInput, required=True)
     password2 = forms.CharField(label='Password confirmation',widget=forms.PasswordInput, required=True)
+    role = forms.ChoiceField(choices=(('vendor','Vendor'),('cusotmer','Customer')),required=True)
 
     class Meta:
         model = CustomUser
-        fields = ("phone_number",)
+        fields = ("phone_number","role")
 
     def clean_password2(self):
         p1 = self.cleaned_data.get("password1")
@@ -21,6 +22,7 @@ class CustomUserCreationForm(forms.ModelForm):
     def save(self,commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
+        user.role = self.cleaned_data["role"]
         if commit:
             user.save()
         return user

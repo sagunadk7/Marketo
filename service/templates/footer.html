@@ -47,9 +47,10 @@
             <div class="footer-section">
                 <h4>Newsletter</h4>
                 <p>Subscribe to our newsletter for exclusive deals and updates</p>
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" class="newsletter-input" placeholder="Your Email" required>
-                    <button type="submit" class="subscribe-btn">
+                <form method="POST" action="{% url 'subscribe' %}" class="newsletter-form" id="newsletterForm">
+                    {%csrf_token%}
+                    <input name="mail" type="email" class="newsletter-input" placeholder="Your Email" required>
+                    <button  type="submit" class="subscribe-btn">
                         <i class="fas fa-paper-plane"></i> Subscribe
                     </button>
                 </form>

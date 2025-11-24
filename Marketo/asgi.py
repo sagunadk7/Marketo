@@ -1,5 +1,5 @@
 """
-ASGI config for online_food_order project.
+ASGI config for Marketo project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.accounts.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'online_food_order.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Marketo.settings')
 
 application = get_asgi_application()

@@ -2,9 +2,372 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Item - Foodie Delights</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'CSS/header.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/footer.css' %}">
+    <style>
+        body {
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            color: #333;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .upload-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #ff6b6b;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .image-upload {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .image-upload:hover {
+            border-color: #ff6b6b;
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .price-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff5252;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .preview-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .preview-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .preview-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            background: #e9ecef;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .preview-details h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .preview-price {
+            color: #ff6b6b;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .price-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    {% include 'header.html' %}
 
+    <div class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Add New Menu Item</h1>
+            <p class="page-subtitle">Upload delicious food items to your menu</p>
+        </div>
+
+        <div class="upload-container">
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" id="itemName" placeholder="Enter item name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemDescription">Description</label>
+                    <textarea id="itemDescription" placeholder="Describe your item..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemCategory">Category</label>
+                    <select id="itemCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="appetizers">Appetizers</option>
+                        <option value="main-course">Main Course</option>
+                        <option value="desserts">Desserts</option>
+                        <option value="beverages">Beverages</option>
+                        <option value="specials">Special Items</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Item Image</label>
+                    <div class="image-upload" onclick="document.getElementById('fileInput').click()">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="upload-text">Click to upload item image</div>
+                        <div class="upload-hint">JPG, PNG or WEBP (Max 5MB)</div>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="price-container">
+                        <div>
+                            <label for="itemPrice">Price ($)</label>
+                            <input type="number" id="itemPrice" placeholder="0.00" min="0" step="0.01" required>
+                        </div>
+                        <div>
+                            <label for="itemDiscount">
+                                Discount (%)
+                                <span class="discount-badge">Optional</span>
+                            </label>
+                            <input type="number" id="itemDiscount" placeholder="0" min="0" max="100">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="preparationTime">Preparation Time (minutes)</label>
+                    <input type="number" id="preparationTime" placeholder="e.g., 15" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="isAvailable" checked>
+                        Available for ordering
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add to Menu</button>
+                    <button type="button" class="btn btn-secondary">Save as Draft</button>
+                </div>
+            </form>
+
+            <div class="preview-section">
+                <div class="preview-title">Item Preview</div>
+                <div class="preview-card">
+                    <div class="preview-image">
+                        <i class="fas fa-image" style="font-size: 48px;"></i>
+                    </div>
+                    <div class="preview-details">
+                        <h4 id="previewName">Item Name</h4>
+                        <p id="previewDescription">Item description will appear here...</p>
+                        <div class="preview-price" id="previewPrice">$0.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('uploadForm');
+            const itemName = document.getElementById('itemName');
+            const itemDescription = document.getElementById('itemDescription');
+            const itemPrice = document.getElementById('itemPrice');
+            const itemDiscount = document.getElementById('itemDiscount');
+
+            const previewName = document.getElementById('previewName');
+            const previewDescription = document.getElementById('previewDescription');
+            const previewPrice = document.getElementById('previewPrice');
+
+            // Update preview in real-time
+            itemName.addEventListener('input', function() {
+                previewName.textContent = this.value || 'Item Name';
+            });
+
+            itemDescription.addEventListener('input', function() {
+                previewDescription.textContent = this.value || 'Item description will appear here...';
+            });
+
+            function updatePricePreview() {
+                const price = parseFloat(itemPrice.value) || 0;
+                const discount = parseFloat(itemDiscount.value) || 0;
+
+                if (discount > 0) {
+                    const discountedPrice = price - (price * discount / 100);
+                    previewPrice.textContent = `$${discountedPrice.toFixed(2)} (${discount}% off)`;
+                    previewPrice.style.color = '#28a745';
+                } else {
+                    previewPrice.textContent = `$${price.toFixed(2)}`;
+                    previewPrice.style.color = '#ff6b6b';
+                }
+            }
+
+            itemPrice.addEventListener('input', updatePricePreview);
+            itemDiscount.addEventListener('input', updatePricePreview);
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Item added successfully!');
+                form.reset();
+                previewName.textContent = 'Item Name';
+                previewDescription.textContent = 'Item description will appear here...';
+                previewPrice.textContent = '$0.00';
+                previewPrice.style.color = '#ff6b6b';
+            });
+        });
+    </script>
 </body>
 </html>

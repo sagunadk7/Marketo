@@ -14,10 +14,13 @@ OTP_VALID_MINUTES = 10
 def request_otp_view(request):
     if request.method == 'POST':
         phone = request.POST.get("phone_number","").strip()
+        selected_role = request.POST.get('role')
         if not phone:
             messages.error(request,"Enter phone_number.")
             return redirect("request_otp")
-        user,created = CustomUser.objects.get_or_create(phone_number=phone)
+        user,created = CustomUser.objects.get_or_create(phone_number=phone,role=selected_role)
+        print(f'This is user --> {user}')
+        print(f'This is created --> {created}')
         otp = generate_otp()
         user.otp_code = otp
         user.otp_created_at = timezone.now()
@@ -32,6 +35,9 @@ def request_otp_view(request):
 
 def verify_otp_view(request):
     phone = request.session.get("otp_phone")
+    next_url = request.session.get('next-url')
+    print("SESSION DATA:", dict(request.session))
+
     if request.method == "POST":
         phone = request.POST.get("phone_number",phone)
         otp_entered = request.POST.get("otp","").strip()
@@ -61,7 +67,16 @@ def verify_otp_view(request):
         user.backend='django.contrib.auth.backends.ModelBackend'
         login(request,user)
         request.session.pop('otp_phone',None)
-        return redirect('store')
+        next_url = request.session.pop('next_url',None)
+        if next_url:
+            return redirect(next_url)
+        if request.user.role == 'vendor':
+            return redirect('vendor_dashboard')
+        elif request.user.role == 'customer':
+            return redirect('store')
+        else:
+            return redirect('store')
+
     return render(request,'enter_otp.html')
 
 def logout_view(request):

@@ -3,11 +3,11 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,Permissi
 
 class CustomUserManager(BaseUserManager):
     """ Manager for CustomUser. Implements create_user and create_superuser"""
-    def create_user(self,Phone_number,Password=None,**extra_fields):
+    def create_user(self,Phone_number,role,Password=None,**extra_fields):
         if not Phone_number:
             raise ValueError("Phone number is required.")
         phone_number = str(Phone_number).strip()
-        user = self.model(phone_number=phone_number,**extra_fields)
+        user = self.model(phone_number=phone_number,role=role,**extra_fields)
         user.set_password(Password)
         user.save(using=self._db)
         return user
@@ -18,6 +18,7 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_staff',True)
         extra_fields.setdefault('is_superuser',True)
         extra_fields.setdefault('is_active',True)
+        extra_fields['role'] = None
 
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must  have is_staff=True')
@@ -29,10 +30,11 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     phone_number = models.CharField(max_length=15,unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    user_type = models.BooleanField()
     otp_code = models.CharField(max_length=6,blank=True,null=True)
     otp_created_at = models.DateTimeField(blank=True,null=True)
     otp_used = models.BooleanField(default=False)
+    ROLE_CHOICES = (('vendor','Vendor'),('customer','Customer'),)
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES)
 
     objects = CustomUserManager()
 
@@ -41,3 +43,7 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
 
     def __str__(self):
         return self.phone_number
+    def is_vendor(self):
+        return self.role == 'vendor'
+    def is_customer(self):
+        return self.role == 'customer'
